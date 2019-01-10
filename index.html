@@ -3,9 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <title>JStep</title>
-    <link type="text/css" rel="stylesheet" href="./css/style.css">
+    <link type="text/css" rel="stylesheet" href="../../css/index.css">
   </head>
-  <body>
-
+    <main id="root"></main>
+    <script src='./app.bundle.js'></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        const { ipcRenderer } = require('electron')
+        ipcRenderer.send('windowDoneLoading', {}) // let backend know react is done rendering.
+        })
+    </script>
   </body>
 </html>

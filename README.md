@@ -1,2 +1,7 @@
-JS Video Frame Step tool for osu-xai.
-Adapted from https://lwneal.com/scrubber.html 
+# JStep
+## Build
+`npm run build`
+`npm start`
+
+## Sources
+Template: https://github.com/zainkai/react-electron-template
