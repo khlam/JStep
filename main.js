@@ -64,9 +64,13 @@ if ((videoFrames !== null) && (jsonFrames !== null)) {
   }
 }
 
-ipcMain.on('newVideoFile', (e, newVideoFile) => {
-  console.log("here")
+ipcMain.on('newVideo', (e, newVideoFile) => {
   const videoFrames = getFrames(newVideoFile)
+})
+
+ipcMain.on('newJSON', (e, newJSONFile) => {
+  console.log(newJSONFile)
+  //const JSONFrames = getFrames(newJSONFile)
 })
 
 // need to wait for react to finishing building Dom

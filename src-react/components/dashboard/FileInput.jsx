@@ -15,11 +15,20 @@ export class FileInput extends Component {
             this.props.onNewVideo(paths)
         }
     }
+    onModJSONFile () {
+      const { paths } = this.props
+      const path = dialog.showOpenDialog({ properties: ['openFile'], defaultPath: paths.json })
+      if (path !== undefined) {
+          paths.json = path[0]
+          this.props.onNewJSON(paths)
+      }
+   }
 
   render () {
     return (
       <div>
         <button onClick={(e) => this.onModVideoFile(e)} >Video</button>
+        <button onClick={(e) => this.onModJSONFile(e)} >JSON</button>
       </div>
     )
   }
