@@ -8,7 +8,8 @@ import configureStore from './configureStore'
 
 const store = configureStore()
 const electronChannels = [
-  'HELLO_WORLD'
+  'HELLO_WORLD',
+  'modFp'
 ]
 
 class App extends React.Component {

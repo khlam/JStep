@@ -1,23 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
+import { getPaths } from '../../redux/selectors/index'
 import { ipcSendAction } from '../../redux/actions/index'
 import { FileInput } from '../../components/dashboard/FileInput'
 
 export class FileInputContainer extends React.Component {
   render () {
     return (
-        <div>
-            <FileInput {...this.props} />
-        </div>
+        <FileInput {...this.props} />
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    version: null,
-    settings: null,
+    paths: getPaths(state)
   }
 }
 
