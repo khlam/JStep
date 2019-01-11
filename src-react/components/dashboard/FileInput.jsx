@@ -9,7 +9,6 @@ export class FileInput extends Component {
 
     onModVideoFile () {
         const { paths } = this.props
-        console.log(this.props)
         const path = dialog.showOpenDialog({ properties: ['openFile'], defaultPath: paths.video })
         if (path !== undefined) {
             paths.video = path[0]

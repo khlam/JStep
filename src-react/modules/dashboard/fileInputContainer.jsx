@@ -4,8 +4,10 @@ import { getPaths } from '../../redux/selectors/index'
 import { ipcSendAction } from '../../redux/actions/index'
 import { FileInput } from '../../components/dashboard/FileInput'
 
-export class FileInputContainer extends React.Component {
+class FileInputContainer extends React.Component {
   render () {
+    console.log(this.props)
+
     return (
         <FileInput {...this.props} />
     )
@@ -13,6 +15,7 @@ export class FileInputContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log("here2 ", state)
   return {
     paths: getPaths(state)
   }

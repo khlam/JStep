@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { FileInputContainer } from '../modules/dashboard/fileInputContainer'
+import FileInputContainer from '../modules/dashboard/fileInputContainer'
 
 export class Dashboard extends React.Component {
   render () {
@@ -13,5 +13,5 @@ export class Dashboard extends React.Component {
 }
 
 export default connect(
-    null
+    null, null
 )(Dashboard)
