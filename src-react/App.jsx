@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+
+import Dashboard from './screens/Dashboard' 
 import IpcListener from './redux/IpcListener'
 import configureStore from './configureStore'
 
@@ -13,8 +15,10 @@ class App extends React.Component {
   render () {
     return (
       <Provider store={store}>
-        <IpcListener channels={electronChannels} />
-        {/* React screen here */}
+        <div>
+          <Dashboard />
+          <IpcListener channels={electronChannels} />
+        </div>
       </Provider>
     )
   }
