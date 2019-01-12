@@ -9,7 +9,7 @@ import configureStore from './configureStore'
 const store = configureStore()
 const electronChannels = [
   'HELLO_WORLD',
-  'filePaths'
+  'modFiles'
 ]
 
 class App extends React.Component {

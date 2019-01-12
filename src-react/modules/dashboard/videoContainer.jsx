@@ -2,12 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getPaths } from '../../redux/selectors/index'
 import { ipcSendAction } from '../../redux/actions/index'
-import { FileInput } from '../../components/dashboard/FileInput'
+import { Video } from '../../components/dashboard/video'
 
-class FileInputContainer extends React.Component {
+class VideoContainer extends React.Component {
   render () {
     return (
-        <FileInput {...this.props} />
+        <Video {...this.props} />
     )
   }
 }
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(FileInputContainer)
+)(VideoContainer)

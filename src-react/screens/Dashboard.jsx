@@ -1,27 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import FileInputContainer from '../modules/dashboard/fileInputContainer'
+import VideoContainer from '../modules/dashboard/videoContainer'
 
 export class Dashboard extends React.Component {
   render () {
-    //<FileInputContainer />
     return (
-     <table className="mainDisplay">
+      <table className="mainDisplay">
+        <tbody>
           <tr>
             <td className="videoFrame">
-              Video Frame
+              <VideoContainer />
             </td>
-            <td className="JSONFrame" rowspan="2">
+            <td className="JSONFrame" rowSpan="2">
               JSON Frame
             </td>
           </tr>
           <tr>
-            <td className="playerFrame" colspan="2">
+            <td className="playerFrame" colSpan="2">
               Player Control Frame
             </td>
           </tr>
-
-     </table>
+        </tbody>
+        </table>
     )
   }
 }

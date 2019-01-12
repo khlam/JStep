@@ -66,7 +66,7 @@ if ((videoFrames !== null) && (jsonFrames !== null)) {
 ipcMain.on('newModFiles', (e, newFileObj) => {
   fileObj = newFileObj
   console.log(fileObj)
-  mainWindow.webContents.send('filePaths', fileObj)
+  mainWindow.webContents.send('modFiles', fileObj)
 })
 
 // need to wait for react to finishing building Dom

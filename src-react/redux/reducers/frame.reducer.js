@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
 const initialFileState = { 'video': '', 'json': '' }
-const paths = (state = initialFileState, action) => {
+const filePaths = (state = initialFileState, action) => {
   switch (action.type) {
     case 'modFiles':
       return action.data
@@ -11,5 +11,5 @@ const paths = (state = initialFileState, action) => {
 }
 
 export const frame = combineReducers({
-  paths
+  filePaths
 })
