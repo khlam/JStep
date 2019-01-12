@@ -15,11 +15,21 @@ export class Video extends Component {
             this.props.onModFiles(paths)
         }
     }
+
     renderVideoButton() {
         return (
             <div className="col-3">
                 <button onClick={(e) => this.onModVideoFile(e)} >Video</button>
             </div>
+        )
+    }
+
+    renderVideoFrame() {
+        const { paths } = this.props
+        return (
+            <video>
+            <source src={`${paths.video}`} type="video/mp4"/>
+            </video>
         )
     }
 
@@ -29,7 +39,7 @@ export class Video extends Component {
              console.log("Video path is empty.")
              return (this.renderVideoButton())
          }else {
-             return (paths.video)
+             return (this.renderVideoFrame())
          }
     }
 

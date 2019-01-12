@@ -53,7 +53,8 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-let fileObj = {}
+let fileObj = {'video': '', 'json': ''} // Init all paths to ''
+let currentFrame = 0  // Init starting frame to index 0
 /*
 if ((videoFrames !== null) && (jsonFrames !== null)) {
   if (jsonFrames === videoFrames) {
@@ -67,6 +68,12 @@ ipcMain.on('newModFiles', (e, newFileObj) => {
   fileObj = newFileObj
   console.log(fileObj)
   mainWindow.webContents.send('modFiles', fileObj)
+
+  if (fileObj.video !== '') {
+    //frames = getFrames(fileObj.video)
+    //mainWindow.webContents.send('currentFrame', frames[currentFrame])
+  }
+
 })
 
 // need to wait for react to finishing building Dom
