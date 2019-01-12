@@ -6,8 +6,6 @@ import { FileInput } from '../../components/dashboard/FileInput'
 
 class FileInputContainer extends React.Component {
   render () {
-    console.log(this.props)
-
     return (
         <FileInput {...this.props} />
     )
@@ -15,7 +13,6 @@ class FileInputContainer extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("here2 ", state)
   return {
     paths: getPaths(state)
   }
@@ -24,8 +21,7 @@ const mapStateToProps = (state) => {
 // mix of dispatch and non dispatch functions
 const mapDispatchToProps = (dispatch) => {
   return {
-    onNewVideo: (videoFP) => { dispatch(ipcSendAction('newVideo', videoFP)) },
-    onNewJSON: (jsonFP) => { dispatch(ipcSendAction('newJSON', jsonFP)) }
+    onModFiles: (filesObj) => { dispatch(ipcSendAction('newModFiles', filesObj)) },
   }
 }
 

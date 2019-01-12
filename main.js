@@ -53,24 +53,20 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-let videoFrames = null
-let jsonFrames = null
-
+let fileObj = {}
+/*
 if ((videoFrames !== null) && (jsonFrames !== null)) {
   if (jsonFrames === videoFrames) {
     console.log("Video Frame and JSON frame count match! ", jsonFrames)
   }else {
     console.log("Frame length mismatch.\n\tVideo Frames: ", videoFrames, "\n\tJSON Frames: ", jsonFrames)
   }
-}
+}*/
 
-ipcMain.on('newVideo', (e, newVideoFile) => {
-  const videoFrames = getFrames(newVideoFile)
-})
-
-ipcMain.on('newJSON', (e, newJSONFile) => {
-  console.log(newJSONFile)
-  //const JSONFrames = getFrames(newJSONFile)
+ipcMain.on('newModFiles', (e, newFileObj) => {
+  fileObj = newFileObj
+  console.log(fileObj)
+  mainWindow.webContents.send('filePaths', fileObj)
 })
 
 // need to wait for react to finishing building Dom
