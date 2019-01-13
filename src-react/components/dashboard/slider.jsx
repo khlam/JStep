@@ -5,10 +5,18 @@ export class Slider extends Component {
         super(props)
     }
 
+    renderSlider() {
+        return (
+            <div>
+                <input type="range" min="1" max="100"/>
+            </div>
+        )
+    }
+
     render () {
         return (
             <div>
-                test
+                {this.renderSlider()}
             </div>
         )
     }
