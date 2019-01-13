@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 import { app, BrowserWindow, ipcMain } from 'electron'
 import { getFrames } from './src/video'
+import { getJsonFrame } from './src/json'
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 export let mainWindow
@@ -55,6 +56,7 @@ app.on('activate', () => {
 
 let fileObj = {'video': '', 'json': ''} // Init all paths to ''
 let currentFrame = 0  // Init starting frame to index 0
+let jsonObj = null
 /*
 if ((videoFrames !== null) && (jsonFrames !== null)) {
   if (jsonFrames === videoFrames) {
@@ -72,6 +74,13 @@ ipcMain.on('newModFiles', (e, newFileObj) => {
   if (fileObj.video !== '') {
     //frames = getFrames(fileObj.video)
     //mainWindow.webContents.send('currentFrame', frames[currentFrame])
+  }
+  if (fileObj.json !== '') {
+    console.log("here")
+    getJsonFrame(fileObj.json).then( val => {
+      jsonObj = val
+      mainWindow.webContents.send('currentJsonFrame', jsonObj[currentFrame])
+    })
   }
 
 })

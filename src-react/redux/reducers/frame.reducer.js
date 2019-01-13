@@ -10,6 +10,17 @@ const filePaths = (state = initialFileState, action) => {
   }
 }
 
+const initialJsonState = "JSON NOT LOADED"
+const showJson = (state = initialJsonState, action) => {
+  switch (action.type) {
+    case 'currentJsonFrame':
+      return action.data
+    default:
+      return state
+  }
+}
+
 export const frame = combineReducers({
-  filePaths
+  filePaths,
+  showJson
 })

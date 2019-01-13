@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getPaths } from '../../redux/selectors/index'
 import { ipcSendAction } from '../../redux/actions/index'
 import { Video } from '../../components/dashboard/video'
 
@@ -14,7 +13,7 @@ class VideoContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    paths: getPaths(state)
+    paths: state.frame.filePaths
   }
 }
 

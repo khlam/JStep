@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getPaths } from '../../redux/selectors/index'
 import { ipcSendAction } from '../../redux/actions/index'
 import { Json } from '../../components/dashboard/Json'
 
@@ -14,7 +13,8 @@ class JsonContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    paths: getPaths(state)
+    paths: state.frame.filePaths,
+    json: state.frame.showJson
   }
 }
 

@@ -25,10 +25,10 @@ export class Json extends Component {
     }
 
     renderJSONFrame() {
-        const { paths } = this.props
+        const { json } = this.props
         return (
             <div>
-                {paths.json}
+                {JSON.stringify(json)}
             </div>
         )
     }
