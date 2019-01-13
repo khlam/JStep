@@ -6,23 +6,17 @@ import JsonContainer from '../modules/dashboard/JSONContainer'
 export class Dashboard extends React.Component {
   render () {
     return (
-      <table className="mainDisplay">
-        <tbody>
-          <tr>
-            <td className="videoFrame">
-              <VideoContainer />
-            </td>
-            <td className="JSONFrame" rowSpan="2">
-              <JsonContainer />
-            </td>
-          </tr>
-          <tr>
-            <td className="playerFrame" colSpan="2">
-              Player Control Frame
-            </td>
-          </tr>
-        </tbody>
-        </table>
+      <div>
+        <div className="videoFrame">
+          <VideoContainer />
+        </div>
+        <div className="JSONFrame">
+          <JsonContainer />
+        </div>
+        <div className="playerFrame" >
+            Player Control Frame
+        </div>
+      </div>
     )
   }
 }
