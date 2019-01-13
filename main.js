@@ -76,7 +76,6 @@ ipcMain.on('newModFiles', (e, newFileObj) => {
     //mainWindow.webContents.send('currentFrame', frames[currentFrame])
   }
   if (fileObj.json !== '') {
-    console.log("here")
     getJsonFrame(fileObj.json).then( val => {
       jsonObj = val
       mainWindow.webContents.send('currentJsonFrame', jsonObj[currentFrame])
