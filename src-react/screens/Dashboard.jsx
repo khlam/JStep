@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import VideoContainer from '../modules/dashboard/videoContainer'
+import JsonContainer from '../modules/dashboard/JSONContainer'
 
 export class Dashboard extends React.Component {
   render () {
@@ -12,7 +13,7 @@ export class Dashboard extends React.Component {
               <VideoContainer />
             </td>
             <td className="JSONFrame" rowSpan="2">
-              JSON Frame
+              <JsonContainer />
             </td>
           </tr>
           <tr>
