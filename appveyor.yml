@@ -1,31 +1,3 @@
-# Execute tests on all pushes to any branch except master and dev
--
-  branches:
-    except:
-      - master
-      - dev
-  cache:
-    - node_modules
-  environment:
-    matrix:
-      - nodejs_version: 8
-  install:
-    - ps: $env:package_version = (Get-Content -Raw -Path package.json | ConvertFrom-Json).version
-    - ps: Install-Product node $env:nodejs_version
-    - ps: If ($env:APPVEYOR_REPO_BRANCH -eq "master") { $env:toggle_prerelease="false"; $env:rel_type="stable"} Else {$env:toggle_prerelease="true"; $env:rel_type="nightly"}
-    - set CI=true
-    - npm install -g npm@latest
-    - set PATH=%APPDATA%\npm;%PATH%
-    - npm install
-  build_script:
-    - cmd: echo "skip build just testing"
-  matrix:
-    fast_finish: true
-  test_script:
-    - npm run test
-
-# Test and only build windows release on master and dev branches
--
   branches:
     only:
       - master
@@ -46,8 +18,6 @@
     - npm install
   matrix:
     fast_finish: true
-  test_script:
-    - npm run test
   build_script:
     - npm run build
     - npm run package-win
