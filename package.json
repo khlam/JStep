@@ -7,7 +7,29 @@
     "linter": "standard --fix",
     "test": "jest --config=jest.config.json",
     "build": "webpack --mode development",
-    "build:hot": "webpack --watch --mode development"
+    "build:hot": "webpack --watch --mode development",
+    "package-win": "electron-builder --win --publish never"
+  },
+  "build": {
+    "appId": "com.electron.JStep",
+    "productName": "JStep",
+    "win": {
+      "asar": true,
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "license": "LICENSE.md",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "runAfterFinish": true
+    },
+    "directories": {
+      "output": "release"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -20,6 +42,7 @@
     "chai": "^4.2.0",
     "css-loader": "^1.0.0",
     "electron": "^3.0.9",
+    "electron-builder": "^20.38.4",
     "electron-packager": "^12.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
