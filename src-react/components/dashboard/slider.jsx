@@ -12,11 +12,9 @@ export class Slider extends Component {
         let player = document.getElementById('videoFrame');
         if (typeof(player) != 'undefined' && player != null)
         {
-            let interval = player.duration / fps
-            player.currentTime = currentFrame * interval
+            player.currentTime = currentFrame / fps
             console.log("Duration: ",player.duration)
             console.log("Frame IDX: ", currentFrame)
-            console.log("Interval: ", interval)
             console.log("Current vid time: ", player.currentTime)
         }
     }
