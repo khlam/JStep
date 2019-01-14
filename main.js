@@ -58,40 +58,27 @@ app.on('activate', () => {
 // from 0 to the index of the last frame.
 function sendFrame(currentFrame) {
   console.log("\tFrame: ", currentFrame)
-  if (fileObj.video !== '') {
-    console.log("Not implimented")
-    //frames = getFrames(fileObj.video)
-    //mainWindow.webContents.send('currentFrame', frames[currentFrame])
-  }
   if (fileObj.json !== '') {
     getJsonFrame(fileObj.json).then( val => {
       jsonArr = val
-      mainWindow.webContents.send('currentJsonFrame', jsonArr[currentFrame]) // Sends the current JSON object to the frontend
+      mainWindow.webContents.send('currentJsonFrame', jsonArr[currentFrame - 1]) // Sends the current JSON object to the frontend
       mainWindow.webContents.send('frameIDX', currentFrame)
     })
   }
 }
 
 let fileObj = {'video': '', 'json': ''} // Init all paths to ''
-let currentFrame = 0  // Init starting frame to index 0
-let jsonArr = null
+let currentFrame = 1  // Init starting frame to index 1
 let totalFrameLen = 0
-/*
-if ((videoFrames !== null) && (jsonFrames !== null)) {
-  if (jsonFrames === videoFrames) {
-    console.log("Video Frame and JSON frame count match! ", jsonFrames)
-  }else {
-    console.log("Frame length mismatch.\n\tVideo Frames: ", videoFrames, "\n\tJSON Frames: ", jsonFrames)
-  }
-}*/
+let jsonArr = null
 
 ipcMain.on('newModFiles', (e, newFileObj) => {
   fileObj = newFileObj
   mainWindow.webContents.send('modFiles', fileObj)
   getJsonFrame(fileObj.json).then( val => {
     jsonArr = val
-    totalFrameLen = jsonArr.length - 1
-    console.log("JSON successfully read. Total length is ", totalFrameLen)
+    totalFrameLen = jsonArr.length
+    console.log("JSON successfully read. Total length is ", totalFrameLen, " frames.")
     mainWindow.webContents.send('totalFrameLen', totalFrameLen)
   })
   sendFrame(currentFrame)
@@ -104,7 +91,7 @@ ipcMain.on('changeFrame', (e, newFrame) => {
 
 // need to wait for react to finishing building Dom
 ipcMain.on('windowDoneLoading', () => {
-  currentFrame = 0
+  currentFrame = 1
   sendFrame(currentFrame)
   mainWindow.webContents.send('totalFrameLen', totalFrameLen)
   mainWindow.webContents.send('modFiles', fileObj)
