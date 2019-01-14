@@ -22,20 +22,20 @@
     - npm run build
     - npm run package-win
   after_build:
-  - ps: 7z a WorldOfAddons-$env:package_version-$env:rel_type-win32x64.zip $env:APPVEYOR_BUILD_FOLDER\release\*.exe $env:APPVEYOR_BUILD_FOLDER\README.md $env:APPVEYOR_BUILD_FOLDER\LICENSE.md
+  - ps: 7z a JStep-$env:package_version-$env:rel_type-win32x64.zip $env:APPVEYOR_BUILD_FOLDER\release\*.exe $env:APPVEYOR_BUILD_FOLDER\README.md $env:APPVEYOR_BUILD_FOLDER\LICENSE.md
   artifacts:
-  - path: WorldOfAddons-$(package_version)-$(rel_type)-win32x64.zip
-    name: WorldOfAddons-$(package_version)-$(rel_type)-win32x64
+  - path: JStep-$(package_version)-$(rel_type)-win32x64.zip
+    name: JStep-$(package_version)-$(rel_type)-win32x64
   shallow_clone: true
   clone_depth: 1
   deploy:
   - provider: GitHub
     release: $(package_version)-$(rel_type)
     prerelease: $(toggle_prerelease)
-    description: <i><b>[Please consult our wiki for installation and usage guides](https://github.com/WorldofAddons/worldofaddons/wiki)</b></i></br>Pre-release builds may be unstable.</br>Automatically built from branch `$(APPVEYOR_REPO_BRANCH)`, AppVeyor build `$(APPVEYOR_BUILD_VERSION)`</br></br>$(APPVEYOR_REPO_COMMIT_MESSAGE)
+    description: Automatically built from branch `$(APPVEYOR_REPO_BRANCH)`, AppVeyor build `$(APPVEYOR_BUILD_VERSION)`</br></br>$(APPVEYOR_REPO_COMMIT_MESSAGE)
     auth_token:
       secure: JPLPY6cHS8ydAPy2lc49ym1aBGk5uUStEAKfEQuVqdB2Jl9X/sfWdu4MVagLff1D
-    artifact: WorldOfAddons-$(package_version)-$(rel_type)-win32x64.zip
+    artifact: JStep-$(package_version)-$(rel_type)-win32x64.zip
     on:
       branch: $(APPVEYOR_REPO_BRANCH)
       
