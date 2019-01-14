@@ -57,18 +57,19 @@ app.on('activate', () => {
 // Sends the frame (currentFrame) to the front-end. Var currentFrame is an integer
 // from 0 to the index of the last frame.
 function sendFrame(currentFrame) {
-  console.log("\tFrame: ", currentFrame)
   if (fileObj.json !== '') {
     getJsonFrame(fileObj.json).then( val => {
       jsonArr = val
-      mainWindow.webContents.send('currentJsonFrame', jsonArr[currentFrame - 1]) // Sends the current JSON object to the frontend
+      const jsonIDX = currentFrame - 1
+      console.log("\tVideo Frame: ", currentFrame, "\tJSON IDX: ", jsonIDX)
+      mainWindow.webContents.send('currentJsonFrame', jsonArr[jsonIDX]) // Sends the current JSON object to the frontend
       mainWindow.webContents.send('frameIDX', currentFrame)
     })
   }
 }
 
 let fileObj = {'video': '', 'json': ''} // Init all paths to ''
-let currentFrame = 1  // Init starting frame to index 1
+let currentFrame = 1  // Init starting frame to index 1 to synchronize with video
 let totalFrameLen = 0
 let jsonArr = null
 
