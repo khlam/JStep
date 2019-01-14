@@ -54,9 +54,28 @@ app.on('activate', () => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
+// Sends the frame (currentFrame) to the front-end. Var currentFrame is an integer
+// from 0 to the index of the last frame.
+function sendFrame(currentFrame) {
+  console.log("\tFrame: ", currentFrame)
+  if (fileObj.video !== '') {
+    console.log("Not implimented")
+    //frames = getFrames(fileObj.video)
+    //mainWindow.webContents.send('currentFrame', frames[currentFrame])
+  }
+  if (fileObj.json !== '') {
+    getJsonFrame(fileObj.json).then( val => {
+      jsonArr = val
+      mainWindow.webContents.send('currentJsonFrame', jsonArr[currentFrame]) // Sends the current JSON object to the frontend
+      mainWindow.webContents.send('frameIDX', currentFrame)
+    })
+  }
+}
+
 let fileObj = {'video': '', 'json': ''} // Init all paths to ''
 let currentFrame = 0  // Init starting frame to index 0
-let jsonObj = null
+let jsonArr = null
+let totalFrameLen = 0
 /*
 if ((videoFrames !== null) && (jsonFrames !== null)) {
   if (jsonFrames === videoFrames) {
@@ -68,23 +87,25 @@ if ((videoFrames !== null) && (jsonFrames !== null)) {
 
 ipcMain.on('newModFiles', (e, newFileObj) => {
   fileObj = newFileObj
-  console.log(fileObj)
   mainWindow.webContents.send('modFiles', fileObj)
+  getJsonFrame(fileObj.json).then( val => {
+    jsonArr = val
+    totalFrameLen = jsonArr.length
+    console.log("JSON successfully read. Total length is ", totalFrameLen)
+    mainWindow.webContents.send('totalFrameLen', totalFrameLen)
+  })
+  sendFrame(currentFrame)
+})
 
-  if (fileObj.video !== '') {
-    //frames = getFrames(fileObj.video)
-    //mainWindow.webContents.send('currentFrame', frames[currentFrame])
-  }
-  if (fileObj.json !== '') {
-    getJsonFrame(fileObj.json).then( val => {
-      jsonObj = val
-      mainWindow.webContents.send('currentJsonFrame', jsonObj[currentFrame])
-    })
-  }
-
+ipcMain.on('changeFrame', (e, newFrame) => {
+  currentFrame = newFrame
+  sendFrame(currentFrame)
 })
 
 // need to wait for react to finishing building Dom
 ipcMain.on('windowDoneLoading', () => {
-  //mainWindow.webContents.send('HELLO_WORLD', {foo: 'bar'})
+  currentFrame = 0
+  sendFrame(currentFrame)
+  mainWindow.webContents.send('totalFrameLen', totalFrameLen)
+  mainWindow.webContents.send('modFiles', fileObj)
 })

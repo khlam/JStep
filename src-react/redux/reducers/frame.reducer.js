@@ -20,7 +20,30 @@ const showJson = (state = initialJsonState, action) => {
   }
 }
 
+const initialFrameIDX = 0
+const frameIDX = (state = initialFrameIDX, action) => {
+  switch (action.type) {
+    case 'frameIDX':
+      return action.data
+    default:
+      return state
+  }
+}
+
+const initialFrameLen = 0
+const frameLen = (state = initialFrameLen, action) => {
+  switch (action.type) {
+    case 'totalFrameLen':
+      return action.data
+    default:
+      return state
+  }
+}
+
+
 export const frame = combineReducers({
+  frameLen,
+  frameIDX,
   filePaths,
   showJson
 })

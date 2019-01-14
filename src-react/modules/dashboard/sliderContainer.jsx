@@ -13,14 +13,16 @@ class SliderContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    paths: state.frame.filePaths
+    paths: state.frame.filePaths,
+    currentFrame: state.frame.frameIDX,
+    totalFrameLen: state.frame.frameLen
   }
 }
 
 // mix of dispatch and non dispatch functions
 const mapDispatchToProps = (dispatch) => {
   return {
-    onModFiles: (filesObj) => { dispatch(ipcSendAction('newModFiles', filesObj)) },
+    onModFrame: (i) => { dispatch(ipcSendAction('changeFrame', i)) },
   }
 }
 

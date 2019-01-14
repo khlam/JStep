@@ -8,13 +8,16 @@ export class Dashboard extends React.Component {
   render () {
     return (
       <div>
-        <div className="videoFrame">
-          <VideoContainer />
+        <div className="row">
+          <div className="videoFrame">
+            <VideoContainer />
+          </div>
+          <div className="JSONFrame">
+            <JsonContainer />
+          </div>
         </div>
-        <div className="JSONFrame">
-          <JsonContainer />
-        </div>
-        <div className="playerFrame" >
+       
+        <div className="row playerFrame" >
             <SliderContainer />
         </div>
       </div>

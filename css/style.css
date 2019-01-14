@@ -10,19 +10,25 @@
 
 .videoFrame {
     background: green;
-    height: 90vh;
-    width: 50vw;
+    max-height: 90vh;
+    min-height: 90vh;
+    width: 50%;
     float: left;
+    position: static;
 }
 
 .JSONFrame {
-    background: red;
-    height: 90vh;
-    width: 50vw;
+    max-height: 90vh;
+    min-height: 90vh;
+    width: 50%;
     float: right;
+    position: static;
 }
 
 .playerFrame {
-    background: blue;
     float: bottom;
+}
+
+.playerSlider {
+    width: 100%;
 }

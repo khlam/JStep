@@ -5,10 +5,22 @@ export class Slider extends Component {
         super(props)
     }
 
+    onChange (e) {
+        this.props.onModFrame(e.target.value)
+    }
+
     renderSlider() {
+        const { currentFrame, totalFrameLen } = this.props
+        console.log("Total Frame Len: ", totalFrameLen)
+        console.log("Current Frame", currentFrame)
         return (
-            <div>
-                <input type="range" min="1" max="100"/>
+            <div className="row">
+                <div className="col-1">
+                    {`${currentFrame}/${totalFrameLen}`}
+                </div>
+                <div className="col-11">
+                    <input className="playerSlider" type="range" min="0" max={`${totalFrameLen}`} onChange={this.onChange.bind(this)}/>
+                </div>
             </div>
         )
     }

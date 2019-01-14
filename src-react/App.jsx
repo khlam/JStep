@@ -8,9 +8,10 @@ import configureStore from './configureStore'
 
 const store = configureStore()
 const electronChannels = [
-  'HELLO_WORLD',
   'modFiles',
-  'currentJsonFrame'
+  'currentJsonFrame',
+  'frameIDX',
+  'totalFrameLen'
 ]
 
 class App extends React.Component {
