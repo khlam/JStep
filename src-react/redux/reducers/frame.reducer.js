@@ -20,6 +20,7 @@ const showJson = (state = initialJsonState, action) => {
   }
 }
 
+// Holds the index of the current frame shown
 const initialFrameIDX = 0
 const frameIDX = (state = initialFrameIDX, action) => {
   switch (action.type) {

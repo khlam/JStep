@@ -90,7 +90,7 @@ ipcMain.on('newModFiles', (e, newFileObj) => {
   mainWindow.webContents.send('modFiles', fileObj)
   getJsonFrame(fileObj.json).then( val => {
     jsonArr = val
-    totalFrameLen = jsonArr.length
+    totalFrameLen = jsonArr.length - 1
     console.log("JSON successfully read. Total length is ", totalFrameLen)
     mainWindow.webContents.send('totalFrameLen', totalFrameLen)
   })
