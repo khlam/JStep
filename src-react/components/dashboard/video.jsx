@@ -27,7 +27,7 @@ export class Video extends Component {
     renderVideoFrame() {
         const { paths } = this.props
         return (
-            <video id="videoFrame">
+            <video id="videoFrame" className="video">
                 <source src={`${paths.video}`} type="video/mp4"/>
             </video>
         )

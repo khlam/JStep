@@ -16,6 +16,11 @@
     position: static;
 }
 
+.video {
+    max-height: 90vh;
+    max-width: 90vw;
+}
+
 .JSONFrame {
     max-height: 90vh;
     min-height: 90vh;
