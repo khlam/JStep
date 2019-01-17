@@ -10,7 +10,7 @@ const filePaths = (state = initialFileState, action) => {
   }
 }
 
-const initialJsonState = "JSON NOT LOADED"
+const initialJsonState = "Waiting for all files..."
 const showJson = (state = initialJsonState, action) => {
   switch (action.type) {
     case 'currentJsonFrame':
