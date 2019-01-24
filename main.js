@@ -115,6 +115,11 @@ ipcMain.on('changeFrame', (e, newFrame) => {
   sendFrame(currentFrame)
 })
 
+
+ipcMain.on('saveFrame', (e, frameTime) => {
+  console.log("Saving frame ", frameTime)
+})
+
 // need to wait for react to finishing building Dom
 ipcMain.on('windowDoneLoading', () => {
   currentFrame = 1

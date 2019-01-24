@@ -23,6 +23,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onModFrame: (i) => { dispatch(ipcSendAction('changeFrame', i)) },
+    onSaveFrame: (i) => { dispatch(ipcSendAction('saveFrame', i)) },
   }
 }
 
